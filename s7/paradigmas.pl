@@ -1,0 +1,47 @@
+%Hechos
+
+es_paradigma('OO').
+es_paradigma('Funcional').
+
+es_lenguaje_programacion('Haskell').
+es_lenguaje_programacion('Java').
+es_lenguaje_programacion('CPP').
+
+funciones_primera('Funcional').
+funciones_primera('Haskell').
+
+declarativo('Funcional').
+declarativo('Haskell').
+
+inmutable('Funcional').
+inmutable('Haskell').
+
+herencia('OO').
+herencia('CPP').
+herencia('Java').
+
+polimorfismo('OO').
+polimorfismo('CPP').
+polimorfismo('Java').
+
+%Regla
+% Es el lenguaje X del paradigma Y
+es(X,Y):-
+    es_lenguaje_programacion(X),
+    es_paradigma(Y),
+    (
+        (
+         funciones_primera(X),
+         funciones_primera(Y),
+         declarativo(X),
+         declarativo(Y),
+         inmutable(X),
+         inmutable(Y)
+        );
+        (
+            herencia(X),
+            herencia(Y),
+            polimorfismo(X),
+            polimorfismo(Y)
+        )
+    ).
