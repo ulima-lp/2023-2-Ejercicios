@@ -19,10 +19,19 @@ int main()
     listaEnlazada->AgregarInstrumentoAlFinal(3, 10.5f);
     listaEnlazada->Imprimir();
 
+    Instrumento* instrumento = listaEnlazada->BuscarPorCodigo(2);
+    std::cout << instrumento->codigo << "," << instrumento->precio <<std::endl;
+
     listaEnlazada->EliminarInstrumento(0);
     listaEnlazada->Imprimir();
     listaEnlazada->EliminarInstrumento(1);
     listaEnlazada->Imprimir();
+
+    Instrumento* instrumento2 = listaEnlazada->BuscarPorCodigo(2);
+    if (instrumento2 != nullptr)
+    {
+        std::cout << instrumento2->codigo << "," << instrumento2->precio <<std::endl;
+    }
 
 
     // TAREA

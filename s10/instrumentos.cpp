@@ -143,6 +143,22 @@ void ListaEnlazadaInstrumentos::EliminarInstrumento(int pos)
     
 }
 
+Instrumento* ListaEnlazadaInstrumentos::BuscarPorCodigo(int codigo)
+{
+    Instrumento* pPivot = this->pPrimer;
+
+    while(pPivot != nullptr)
+    {
+        if (pPivot->codigo == codigo)
+        {
+            // yay lo encontramos!
+            return pPivot;
+        }
+        pPivot = pPivot->siguiente;
+    }
+    return nullptr;
+}
+
 void ListaEnlazadaInstrumentos::Imprimir()
 {
     Instrumento* pPivot = this->pPrimer;
