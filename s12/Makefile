@@ -1,7 +1,8 @@
 all: build
 build:
+	g++ -c herencia.cpp
 	g++ -c instrumentos.cpp
-	g++ instrumentos.o main.cpp -o main
+	g++ herencia.o instrumentos.o main.cpp -o main
 	main.exe
 
 clean:

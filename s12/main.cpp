@@ -1,15 +1,20 @@
 #include "instrumentos.h"
+#include "herencia.h"
 #include <iostream>
+
+void HacerCaminar(Animal* animal)
+{
+    animal->Caminar();
+}
 
 int main()
 {
+    //Animal* a1 = new Animal();
+    Perro* pipo = new Perro();
+    SerHumano* juler = new SerHumano();
 
-    
-    ListaEnlazadaInstrumentos* listaInst = new ListaEnlazadaInstrumentos();
-    listaInst->AgregarInstrumento(1, 20.3);
-    listaInst->AgregarInstrumento(2, 10.9);
+    HacerCaminar(pipo);
+    HacerCaminar(juler);
 
-    delete listaInst;
-    
     return 0;
 }
