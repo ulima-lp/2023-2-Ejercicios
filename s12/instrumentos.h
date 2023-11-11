@@ -14,13 +14,13 @@ public:
     float GetPrecio(); // Metodo
 };
 
-class ListaInstrumentos
+class ListaArreglosInstrumentos
 {
 private:
     int longitud;
     Instrumento* pInst;
 public:
-    ListaInstrumentos();
+    ListaArreglosInstrumentos();
     void AgregarInstrumento(Instrumento* instrumento);
     void Imprimir();
     int GetLongitud();

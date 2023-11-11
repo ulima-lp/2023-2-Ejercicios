@@ -25,14 +25,14 @@ float Instrumento::GetPrecio()
 
 int Instrumento::contador = 0; // inicializar attr de clase
 
-// ===================== ListaInstrumentos =================================
+// ===================== ListaArreglosInstrumentos =================================
 
-ListaInstrumentos::ListaInstrumentos()
+ListaArreglosInstrumentos::ListaArreglosInstrumentos()
 {
     this->longitud = 0;
     this->pInst = nullptr;
 }
-void ListaInstrumentos::AgregarInstrumento(Instrumento* instrumento)
+void ListaArreglosInstrumentos::AgregarInstrumento(Instrumento* instrumento)
 {
     if (this->pInst == nullptr)
     {
@@ -57,7 +57,7 @@ void ListaInstrumentos::AgregarInstrumento(Instrumento* instrumento)
 
     this->longitud++;
 }
-void ListaInstrumentos::Imprimir()
+void ListaArreglosInstrumentos::Imprimir()
 {
     for (int i=0; i < this->longitud; i++)
     {
@@ -65,9 +65,17 @@ void ListaInstrumentos::Imprimir()
     }
     std::cout << std::endl;
 }
-int ListaInstrumentos::GetLongitud()
+int ListaArreglosInstrumentos::GetLongitud()
 {
     return this->longitud;
+}
+
+void ListaArreglosInstrumentos::ImprimirInstrumento(Instrumento *instrumento)
+{
+    std::cout << "Instrumento:" << std::endl;
+    std::cout << "Codigo:" << instrumento->codigo << std::endl;
+    std::cout << "Precio:" << instrumento->precio << std::endl;
+    
 }
 
 // ===================== ListaEnlazadaInstrumentos =================================
@@ -181,14 +189,6 @@ void ListaEnlazadaInstrumentos::Imprimir()
             pPivot = pPivot->siguiente;
     }
     std::cout << std::endl;
-}
-
-void ListaInstrumentos::ImprimirInstrumento(Instrumento *instrumento)
-{
-    std::cout << "Instrumento:" << std::endl;
-    std::cout << "Codigo:" << instrumento->codigo << std::endl;
-    std::cout << "Precio:" << instrumento->precio << std::endl;
-    
 }
 
 // =========================== Persona =================================
