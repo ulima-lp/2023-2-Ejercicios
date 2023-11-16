@@ -13,6 +13,7 @@ public:
     Nota* siguienteNota;
 
     Nota();
+    Nota(int valor, Tipo tipo);
 };
 
 class Alumno
@@ -24,6 +25,7 @@ public:
     Nota* listaNotas;
 
     Alumno();
+    Alumno(std::string codigo, std::string carrera);
     void RegistrarNota(int valor, Tipo tipo);
 };
 
@@ -35,8 +37,8 @@ public:
     Alumno* listaAlumnos;
 
     Seccion();
+    Seccion(int numero, std::string curso);
     void RegistrarAlumno(std::string codigo, std::string nombreCarrera);
     void RegistrarNota(std::string codigo, int valor, Tipo tipo);
     float CalcularPromedio();
 };
-
