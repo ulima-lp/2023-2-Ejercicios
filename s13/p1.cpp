@@ -50,3 +50,24 @@ Seccion::Seccion(int numero, std::string curso)
     this->curso = curso;
     this->listaAlumnos = nullptr;
 }
+
+void Seccion::RegistrarAlumno(std::string codigo, std::string nombreCarrera)
+{
+    Alumno* nuevoAlumno = new Alumno(codigo, nombreCarrera);
+    if (this->listaAlumnos == nullptr)
+    {
+        // No hay alumnos en la seccion
+        this->listaAlumnos = nuevoAlumno;
+
+    }else
+    {
+        // Ya hay alumnos
+        Alumno* pPivotAlumno = this->listaAlumnos;
+        while(pPivotAlumno->siguienteAlumno != nullptr)
+        {
+            pPivotAlumno = pPivotAlumno->siguienteAlumno;
+        }
+        pPivotAlumno->siguienteAlumno = nuevoAlumno;
+    }
+    
+}
