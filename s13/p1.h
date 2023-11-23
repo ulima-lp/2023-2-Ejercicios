@@ -27,10 +27,13 @@ public:
     Alumno();
     Alumno(std::string codigo, std::string carrera);
     void RegistrarNota(int valor, Tipo tipo);
+    float CalcularPromedio();
 };
 
 class Seccion
 {
+private:
+    Alumno* BuscarAlumno(std::string codigo);
 public:
     int numero;
     std::string curso;
