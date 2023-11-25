@@ -1,5 +1,7 @@
 #include "p2.h"
 
+using namespace Davinci;
+
 // ==================================== Letra =====================================
 
 Letra::Letra(int num)
@@ -168,6 +170,27 @@ void Frase::Insertar(Letra* letra, int pos)
     
 }
 
+void Frase::PrintDecodificada()
+{
+    this->Ordenar();
+    Letra* pPivotLetra = this->primeraLetra;
+    int cont = 0;
+
+    while(pPivotLetra != nullptr)
+    {
+        int numSerieFib = Fibonacci(cont);
+        if (numSerieFib == pPivotLetra->num)
+        {
+            std::cout << pPivotLetra->caracter;
+            pPivotLetra = pPivotLetra->siguiente;
+        }else
+        {
+            std::cout << " ";
+        }
+        cont++;
+    }
+}
+
 void Frase::PrintDebug()
 {
     Letra* pPivotLetra = this->primeraLetra;
@@ -177,4 +200,27 @@ void Frase::PrintDebug()
         pPivotLetra = pPivotLetra->siguiente;
     }
     std::cout << std::endl;
+}
+
+int Frase::Fibonacci(int pos)
+{
+    if (pos == 0)
+    {
+        return 1;
+    }
+    if (pos == 1)
+    {
+        return 2;
+    }
+
+    int ant1 = 1;
+    int ant2 = 2;
+    for (int i = 2; i < pos; i++)
+    {
+        int res = ant1 + ant2;
+        ant1 = ant2;
+        ant2 = res;
+    }
+
+    return ant1 + ant2;
 }

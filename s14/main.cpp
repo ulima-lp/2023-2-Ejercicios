@@ -1,6 +1,9 @@
 #include <iostream>
 #include "p2.h"
 
+using namespace std;
+using namespace Davinci;
+
 int main()
 {
     /*
@@ -10,32 +13,36 @@ int main()
     */
     // 1. Leer la longitud
     int tam;
-    std::cin >> tam;
+    cin >> tam;
 
     // 2. Leer los numeros de la sec fib
     Frase* frase = new Frase();
     for (int i=0; i < tam; i++)
     {
         int valor;
-        std::cin >> valor;
+        cin >> valor;
         frase->CrearLetra(valor);
     }
 
     // 3. Leer palabra y procesar cada letra
-    std::string palabra;
-    std::cin >> palabra;
+    string palabra;
+    cin >> palabra;
 
     for (int i=0; i < tam; i++)
     {
-        std::string letraTemp(1, palabra[i]);
+        string letraTemp(1, palabra[i]);
         frase->CompletarCaracter(i, letraTemp);
     }
 
-    frase->PrintDebug();
+    frase->PrintDecodificada();
+
+    //std::cout << Frase::Fibonacci(5) << std::endl;
+
+    //frase->PrintDebug();
 
     //frase->Intercambiar(9,10);
-    frase->Ordenar();
+    //frase->Ordenar();
 
-    frase->PrintDebug();
+    //frase->PrintDebug();
     return 0;
 }
