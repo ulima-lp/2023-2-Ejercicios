@@ -62,7 +62,7 @@ void Frase::Ordenar()
         bool huboIntercambio = false;
         for (int j =0 ; j < this->longitud - i - 1; j++ )
         {
-            if (this->Obtener(j) > this->Obtener(j+1))
+            if (this->Obtener(j)->num > this->Obtener(j+1)->num)
             {
                 this->Intercambiar(j, j+1);
                 huboIntercambio = true;
@@ -79,7 +79,7 @@ Letra *Frase::Obtener(int pos)
 {
     Letra* pPivotLetra = this->primeraLetra;
 
-    if (pPivotLetra == nullptr) return;
+    if (pPivotLetra == nullptr) return nullptr;
 
     int cont = 0;
     while(pPivotLetra != nullptr)
@@ -162,6 +162,8 @@ void Frase::Insertar(Letra* letra, int pos)
             pPivotLetra = pPivotLetra->siguiente;
             cont++;
         }
+        pAnt->siguiente = letra;
+        this->longitud++;
     }
     
 }

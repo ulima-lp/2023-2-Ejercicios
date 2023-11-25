@@ -33,7 +33,8 @@ int main()
 
     frase->PrintDebug();
 
-    frase->Intercambiar(1,2);
+    //frase->Intercambiar(9,10);
+    frase->Ordenar();
 
     frase->PrintDebug();
     return 0;
