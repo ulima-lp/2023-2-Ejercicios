@@ -37,4 +37,142 @@ void Frase::CrearLetra(int num)
 
 void Frase::CompletarCaracter(int pos, std::string caracter)
 {
+    Letra* pPivotLetra = this->primeraLetra;
+
+    if (pPivotLetra == nullptr) return;
+
+    int cont = 0;
+    while(pPivotLetra != nullptr)
+    {
+        if (cont == pos)
+        {
+            pPivotLetra->caracter = caracter;
+            return;
+        }
+        pPivotLetra = pPivotLetra->siguiente;
+        cont++;
+    }
+}
+
+void Frase::Ordenar()
+{
+    // Metodo: Bubble Sort
+    for (int i = 0; i < this->longitud - 1; i++)
+    {
+        bool huboIntercambio = false;
+        for (int j =0 ; j < this->longitud - i - 1; j++ )
+        {
+            if (this->Obtener(j) > this->Obtener(j+1))
+            {
+                this->Intercambiar(j, j+1);
+                huboIntercambio = true;
+            }
+        }
+        if (!huboIntercambio)
+        {
+            break;
+        }
+    }
+}
+
+Letra *Frase::Obtener(int pos)
+{
+    Letra* pPivotLetra = this->primeraLetra;
+
+    if (pPivotLetra == nullptr) return;
+
+    int cont = 0;
+    while(pPivotLetra != nullptr)
+    {
+        if (cont == pos)
+        {
+            return pPivotLetra;
+        }
+        pPivotLetra = pPivotLetra->siguiente;
+        cont++;
+    }
+    return nullptr;
+}
+
+void Frase::Intercambiar(int pos1, int pos2)
+{
+    Letra* letra1 = Sacar(pos2);
+    Insertar(letra1, pos1);
+    Letra* letra2 = Sacar(pos1 + 1);
+    Insertar(letra2, pos2);
+}
+
+Letra *Frase::Sacar(int pos)
+{
+    Letra* pPivotLetra = this->primeraLetra;
+    Letra* pAnt = nullptr;
+
+    if (pos == 0)
+    {
+        this->primeraLetra = pPivotLetra->siguiente;
+        pPivotLetra->siguiente = nullptr;
+        this->longitud--;
+        return pPivotLetra;
+    }else
+    {
+        int cont = 0;
+        while(pPivotLetra != nullptr)
+        {
+            if (cont == pos)
+            {
+                pAnt->siguiente = pPivotLetra->siguiente;
+                pPivotLetra->siguiente = nullptr;
+                this->longitud--;
+                return pPivotLetra;
+            }
+
+            pAnt = pPivotLetra;
+            pPivotLetra = pPivotLetra->siguiente;
+            cont++;
+        }
+    }
+
+    return nullptr;
+}
+
+void Frase::Insertar(Letra* letra, int pos)
+{
+    if (pos == 0)
+    {
+        letra->siguiente = this->primeraLetra;
+        this->primeraLetra = letra;
+        this->longitud++;
+    }else
+    {
+        Letra* pPivotLetra = this->primeraLetra;
+        Letra* pAnt = nullptr;
+
+        int cont = 0;
+        while (pPivotLetra != nullptr)
+        {
+            if (cont == pos)
+            {
+                pAnt->siguiente = letra;
+                letra->siguiente = pPivotLetra;
+                this->longitud++;
+                return;
+            }
+
+            pAnt = pPivotLetra;
+            pPivotLetra = pPivotLetra->siguiente;
+            cont++;
+        }
+    }
+    
+}
+
+void Frase::PrintDebug()
+{
+    Letra* pPivotLetra = this->primeraLetra;
+    while(pPivotLetra != nullptr)
+    {
+        std::cout << pPivotLetra->caracter << "(" << pPivotLetra->num << ") ";
+        pPivotLetra = pPivotLetra->siguiente;
+    }
+    std::cout << std::endl;
 }

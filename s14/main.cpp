@@ -27,10 +27,14 @@ int main()
 
     for (int i=0; i < tam; i++)
     {
-        std::string letraTemp(1, palabra[i]));
+        std::string letraTemp(1, palabra[i]);
         frase->CompletarCaracter(i, letraTemp);
     }
 
+    frase->PrintDebug();
 
+    frase->Intercambiar(1,2);
+
+    frase->PrintDebug();
     return 0;
 }
