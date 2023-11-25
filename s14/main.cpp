@@ -27,7 +27,7 @@ int main()
 
     for (int i=0; i < tam; i++)
     {
-        std::string letraTemp = std::string(palabra.at(i));
+        std::string letraTemp(1, palabra[i]));
         frase->CompletarCaracter(i, letraTemp);
     }
 

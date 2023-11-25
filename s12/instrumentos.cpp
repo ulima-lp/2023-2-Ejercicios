@@ -25,6 +25,20 @@ float Instrumento::GetPrecio()
 
 int Instrumento::contador = 0; // inicializar attr de clase
 
+int ListaInstrumentos::GetLongitud()
+{
+    return this->longitud;
+}
+
+// ==================== ListaInstrumentos ======================================
+void ListaInstrumentos::ImprimirInstrumento(Instrumento *instrumento)
+{
+    std::cout << "Instrumento:" << std::endl;
+    std::cout << "Codigo:" << instrumento->codigo << std::endl;
+    std::cout << "Precio:" << instrumento->precio << std::endl;
+    
+}
+
 // ===================== ListaArreglosInstrumentos =================================
 
 ListaArreglosInstrumentos::ListaArreglosInstrumentos()
@@ -57,6 +71,19 @@ void ListaArreglosInstrumentos::AgregarInstrumento(Instrumento* instrumento)
 
     this->longitud++;
 }
+void ListaArreglosInstrumentos::AgregarInstrumento(int codigo, float precio)
+{
+    //TODO
+}
+void ListaArreglosInstrumentos::EliminarInstrumento(int pos)
+{
+    //TODO
+}
+Instrumento *ListaArreglosInstrumentos::BuscarPorCodigo(int codigo)
+{
+    //TODO
+    return nullptr;
+}
 void ListaArreglosInstrumentos::Imprimir()
 {
     for (int i=0; i < this->longitud; i++)
@@ -64,18 +91,6 @@ void ListaArreglosInstrumentos::Imprimir()
         std::cout << this->pInst[i].codigo << " ";
     }
     std::cout << std::endl;
-}
-int ListaArreglosInstrumentos::GetLongitud()
-{
-    return this->longitud;
-}
-
-void ListaArreglosInstrumentos::ImprimirInstrumento(Instrumento *instrumento)
-{
-    std::cout << "Instrumento:" << std::endl;
-    std::cout << "Codigo:" << instrumento->codigo << std::endl;
-    std::cout << "Precio:" << instrumento->precio << std::endl;
-    
 }
 
 // ===================== ListaEnlazadaInstrumentos =================================
@@ -92,6 +107,9 @@ ListaEnlazadaInstrumentos::~ListaEnlazadaInstrumentos()
     {
         this->EliminarInstrumento(0);
     }
+}
+void ListaEnlazadaInstrumentos::AgregarInstrumento(Instrumento *instrumento)
+{
 }
 void ListaEnlazadaInstrumentos::AgregarInstrumento(int codigo, float precio)
 {
@@ -196,7 +214,7 @@ void ListaEnlazadaInstrumentos::Imprimir()
 Persona::Persona(std::string nombre)
 {
     this->nombre = nombre;
-    this->listaInstrumentos = new ListaEnlazadaInstrumentos();
+    //this->listaInstrumentos = new ListaEnlazadaInstrumentos();
 }
 
 void Persona::AgregarInstrumento(int codigo, float precio)

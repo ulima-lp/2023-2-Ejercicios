@@ -14,22 +14,38 @@ public:
     float GetPrecio(); // Metodo
 };
 
-class ListaArreglosInstrumentos
+class ListaInstrumentos
+{
+
+public:
+    int longitud;
+    virtual void AgregarInstrumento(Instrumento* instrumento) = 0;
+    virtual void AgregarInstrumento(int codigo, float precio) = 0;
+    virtual void EliminarInstrumento(int pos) = 0;
+    virtual Instrumento* BuscarPorCodigo(int codigo) = 0;
+    virtual void Imprimir() = 0;
+    int GetLongitud(); // NO es abstracto y NO es polimorfico
+    static void ImprimirInstrumento(Instrumento* instrumento);
+};
+
+class ListaArreglosInstrumentos : public ListaInstrumentos
 {
 private:
     int longitud;
     Instrumento* pInst;
 public:
     ListaArreglosInstrumentos();
-    void AgregarInstrumento(Instrumento* instrumento);
-    void Imprimir();
-    int GetLongitud();
-    static void ImprimirInstrumento(Instrumento* instrumento);
+    void AgregarInstrumento(Instrumento* instrumento) override;
+    void AgregarInstrumento(int codigo, float precio) override;
+    void EliminarInstrumento(int pos) override;
+    Instrumento* BuscarPorCodigo(int codigo) override;
+    void Imprimir() override;
+    
 };
 
 // ========================================
 
-class ListaEnlazadaInstrumentos
+class ListaEnlazadaInstrumentos : public ListaInstrumentos
 {
 public:
     Instrumento* pPrimer;
@@ -37,11 +53,12 @@ public:
 
     ListaEnlazadaInstrumentos(); // constructor
     ~ListaEnlazadaInstrumentos(); // destructor
-    void AgregarInstrumento(int codigo, float precio);
+    void AgregarInstrumento(Instrumento* instrumento) override;
+    void AgregarInstrumento(int codigo, float precio) override;
     void AgregarInstrumentoAlFinal(int codigo, float precio);
-    void EliminarInstrumento(int pos);
-    Instrumento* BuscarPorCodigo(int codigo);
-    void Imprimir();
+    void EliminarInstrumento(int pos) override;
+    Instrumento* BuscarPorCodigo(int codigo) override;
+    void Imprimir() override;
 };
 
 class Persona
