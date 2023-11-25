@@ -17,5 +17,5 @@ public:
     Letra* primeraLetra;
     Frase();
     void CrearLetra(int num);
-    void CompletarCaracter(int pos);
+    void CompletarCaracter(int pos, std::string caracter);
 };

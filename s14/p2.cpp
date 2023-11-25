@@ -21,6 +21,6 @@ void Frase::CrearLetra(int num)
 {
 }
 
-void Frase::CompletarCaracter(int pos)
+void Frase::CompletarCaracter(int pos, std::string caracter)
 {
 }
